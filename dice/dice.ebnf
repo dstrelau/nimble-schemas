@@ -1,0 +1,25 @@
+roll            ::= ws [repeat] ws dice_sum ws
+character_roll  ::= ws [repeat] ws (dice_sum | dice_sum_stat) ws
+repeat          ::= number ws "x"
+dice_sum        ::= numeric_term (ws sum_op ws numeric_term)*
+dice_sum_stat   ::= dice_group (ws sum_op ws dice_group)* ws sum_op ws stat
+sum_op          ::= "+" | "-"
+numeric_term    ::= dice_group | number
+stat            ::= "STR" | "DEX" | "INT" | "WIL" | "LVL"
+dice_group      ::= [count] "d" size [ws flags] [ws primary_mod]
+count           ::= number
+size            ::= number
+flags           ::= flag+
+flag            ::= advantage | disadvantage | no_explode | vicious
+                  | explode_all | brutal | cheat | miss_threshold
+advantage       ::= "a" [number]
+disadvantage    ::= "d" [number]
+no_explode      ::= "x"
+vicious         ::= "v"
+explode_all     ::= "!"
+brutal          ::= "b"
+cheat           ::= "c"
+miss_threshold  ::= "m" number
+primary_mod     ::= "^" ["-"] number
+number          ::= [0-9]+
+ws              ::= [ \t]*
