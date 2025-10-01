@@ -1,0 +1,193 @@
+{
+  "families": [
+    {
+      "name": "Mana Constructs",
+      "description": "Enchanted with living mana and bound to the will of powerful spellcasters, Mana Constructs are soulless automatons that neither speak nor feel.",
+      "abilities": [
+        {
+          "name": "Mana Charged",
+          "description": "After mana is spent, the closest mana construct MUST attack a target within Range/Reach."
+        }
+      ],
+      "meta": {
+        "source": "https://www.patreon.com/cw/NimbleCo"
+      }
+    },
+    {
+      "name": "Goblins",
+      "abilities": [
+        {
+          "name": "Haha, Missed Me!",
+          "description": "Whenever an attack misses you, deal 1 psychic damage in return.",
+          "effects": [
+            {
+              "trigger": "miss",
+              "damage": { "static": 1 },
+              "type": "psychic"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "monsters": [
+    {
+      "name": "Scourge Hulk",
+      "level": 8,
+      "size": "large",
+      "family": "Mana Constructs",
+      "speed": 8,
+      "armor": "medium",
+      "hp": 75,
+      "actions": [
+        {
+          "name": "Punish",
+          "description": "(Reach 2) 3d6, the highest die is the primary die. On crit: +20 damage & Prone.",
+          "target": { "reach": 2 },
+          "damage": { "roll": "3d6b" },
+          "effects": [
+            {
+              "trigger": "crit",
+              "condition": "prone",
+              "damage": { "static": 20 }
+            }
+          ]
+        }
+      ],
+      "effects": [
+        {
+          "trigger": "death",
+          "description": "An enemy gains 1 action."
+        }
+      ]
+    },
+    {
+      "name": "Goblin Taskmaster",
+      "level": 2,
+      "size": "small",
+      "hp": 30,
+      "armor": "medium",
+      "abilities": [
+        {
+          "name": "Meat Shield",
+          "description": "Can force other goblins to Interpose for him."
+        }
+      ],
+      "actionsPerTurn": "sequential",
+      "actions": [
+        {
+          "name": "Stab",
+          "description": "1d6+2 (or Shoot, Range 8)",
+          "parts": [
+            {
+              "type": "attack",
+              "damage": { "roll": "1d6+2" },
+              "target": { "reach": 8 }
+            }
+          ]
+        },
+        {
+          "name": "Get in here!",
+          "description": "Call a goblin minion to the fight."
+        }
+      ]
+    },
+    {
+      "legendary": true,
+      "name": "Gloomwing the Cruel",
+      "level": 15,
+      "size": "huge",
+      "kind": "Rot Dragon",
+      "hp": 320,
+      "armor": "heavy",
+      "saves": { "all": 2 },
+      "abilities": [
+        {
+          "name": "Aura of Rot",
+          "description": "Creatures within 6 spaces take 5 necrotic damage at the end of their turns."
+        },
+        {
+          "name": "Light Sensitivity",
+          "description": "Radiant damage sppresses Aura of Rot until the end of the next hero's turn"
+        }
+      ],
+      "bloodied": {
+        "hp": 160,
+        "description": "At 160 HP Gloomwing's Rot Breath recharges."
+      },
+      "lastStand": {
+        "hp": 150,
+        "description": "Gloomwing is dying! 150 more damage and he dies. Until then, the damage and range of His Aura of Rot is doubled."
+      },
+
+      "actions": [
+        {
+          "name": "Rot Breath",
+          "description": "(1 use) Fly 10, then (Cone 8) DC 17 DEX save or 8d10 necrotic, half on save.",
+          "uses": 1,
+          "parts": [
+            {
+              "type": "move",
+              "mode": "fly",
+              "speed": 10
+            },
+            {
+              "type": "attack",
+              "save": { "stat": "DEX", "dc": 17 },
+              "damage": { "roll": "8d10", "kind": "necrotic" },
+              "area": { "shape": "cone", "size": 8 }
+            }
+          ]
+        },
+        {
+          "name": "Bite",
+          "description": "(Reach 2) Move 6, then 3d10. On damage: Cruelty’s Gift.",
+          "parts": [
+            { "type": "move", "speed": 6 },
+            {
+              "type": "attack",
+              "damage": { "roll": "3d10" },
+              "target": { "reach": 2 },
+              "effects": [
+                {
+                  "trigger": "damage",
+                  "condition": {
+                    "name": "Cruelty's Gift",
+                    "description": "Healing is halved and Vulnerable to necrotic damage. Healing ends."
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Claws",
+          "description": "(Reach 2) 3d10 slashing + 10 necrotic",
+          "parts": [
+            {
+              "type": "attack",
+              "damage": { "roll": "3d10+10", "kind": "slashing/necrotic" },
+              "target": { "reach": 2 }
+            }
+          ]
+        },
+        {
+          "name": "Tail",
+          "description": "(Reach 4) 1d10 and knocked back that many spaces",
+          "parts": [
+            {
+              "type": "attack",
+              "damage": { "roll": "1d10" },
+              "target": { "reach": 4 },
+              "effects": [
+                {
+                  "description": "knocked back that many spaces"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
