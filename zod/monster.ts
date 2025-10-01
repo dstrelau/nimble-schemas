@@ -54,10 +54,14 @@ export const AttackAreaSchema = z.object({
   size: z.int().positive(),
 });
 
-export const MonsterActionPartMove = z.object({
-  type: z.literal("move"),
+export const MonsterMovementSchema = z.object({
   mode: z.string().optional(),
   speed: z.int().positive(),
+});
+
+export const MonsterActionPartMove = z.object({
+  type: z.literal("move"),
+  ...MonsterMovementSchema.shape,
 });
 
 export const MonsterActionPartAttack = z.object({
@@ -120,11 +124,6 @@ export const MonsterFamily = z.object({
   abilities: z.array(MonsterAbility).default([]),
 });
 
-export const MonsterMovementSchema = z.object({
-  mode: z.string().optional(),
-  speed: z.int().positive(),
-});
-
 export const StandardMonsterSchema = z.object({
   meta: MetadataSchema.optional(),
   legendary: z.literal(false).default(false),
@@ -144,8 +143,7 @@ export const StandardMonsterSchema = z.object({
       wil: z.number().default(0),
     })
     .optional(),
-  speed: z.int().default(6),
-  movement: z.array(MonsterMovementSchema).default([]),
+  movement: z.array(MonsterMovementSchema).default([{ speed: 6 }]),
   abilities: z.array(MonsterAbility).default([]),
   effects: z.array(AbilityEffectSchema).default([]),
   actions: z.array(MonsterAction).default([]),

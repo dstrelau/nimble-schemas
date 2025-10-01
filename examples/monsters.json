@@ -39,7 +39,7 @@
       "level": 8,
       "size": "large",
       "family": "Mana Constructs",
-      "speed": 8,
+      "movement": [{ "speed": 8 }],
       "armor": "medium",
       "hp": 75,
       "actions": [
