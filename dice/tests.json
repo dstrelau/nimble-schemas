@@ -1,5 +1,8 @@
 {
   "valid": [
+    ["3", "static value 3"],
+    ["100", "static value 100"],
+    ["5+10", "two static values added"],
     ["d20", "simple d20 with default explosion"],
     ["1d20", "explicit single d20"],
     ["2d6", "two d6 dice"],

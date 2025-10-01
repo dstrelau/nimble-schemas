@@ -5,27 +5,30 @@ A format for expressing dice rolls with various modifiers and flags.
 ## Basic Syntax
 
 ```
-[<rolls>x][count]d<size>[flags][+/-terms]
+[<rolls>x](<dice_group>|<number>)[+/-terms]
 ```
 
-- **count**: Number of dice (default: 1)
-- **size**: Die size (minimum 2), e.g., d6, d20, d100
-- **flags**: Optional modifiers (order doesn't matter)
-  - `a[n]` - Advantage (roll n (default 1) extra dice, drop lowest)
-  - `d[n]` - Disadvantage (roll n (default 1) extra dice, drop highest)
-  - `x` - No explosion (disable default explosion)
-  - `!` - Explode all (any die can explode, not just primary)
-  - `v` - Vicious (roll an extra die on crit)
-  - `b` - Brutal (highest die becomes primary)
-  - `c` - Cheat (treat non-miss as critical hit)
-  - `m<n>` - Miss threshold (roll of n or below is a miss)
-  - `^<n|-n>` - Modify primary die by +n or -n
+- **number**: A static value (e.g., `3`, `100`)
+- **dice_group**: `[count]d<size>[flags]`
+  - **count**: Number of dice (default: 1)
+  - **size**: Die size (minimum 2), e.g., d6, d20, d100
+  - **flags**: Optional modifiers (order doesn't matter)
+    - `a[n]` - Advantage (roll n (default 1) extra dice, drop lowest)
+    - `d[n]` - Disadvantage (roll n (default 1) extra dice, drop highest)
+    - `x` - No explosion (disable default explosion)
+    - `!` - Explode all (any die can explode, not just primary)
+    - `v` - Vicious (roll an extra die on crit)
+    - `b` - Brutal (highest die becomes primary)
+    - `c` - Cheat (treat non-miss as critical hit)
+    - `m<n>` - Miss threshold (roll of n or below is a miss)
+    - `^<n|-n>` - Modify primary die by +n or -n
 - **+/-terms**: Additional dice groups or numbers
 
 ## Examples
 
 ### Simple rolls
 
+- `10` – Static value
 - `d20` – Single d20
 - `2d6` – Two d6 dice
 - `3d8+5` – Three d8 plus 5

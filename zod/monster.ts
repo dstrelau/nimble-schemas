@@ -32,7 +32,6 @@ export const AttackTargetSchema = z.union([
 export const AttackDamageSchema = z.object({
   kind: z.string().optional(),
   roll: z.string().optional(),
-  static: z.int().positive().optional(),
 });
 
 export const AttackEffectSchema = z.object({

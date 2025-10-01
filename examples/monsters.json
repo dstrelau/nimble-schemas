@@ -22,7 +22,7 @@
           "effects": [
             {
               "trigger": "miss",
-              "damage": { "static": 1 },
+              "damage": { "roll": "1" },
               "type": "psychic"
             }
           ]
