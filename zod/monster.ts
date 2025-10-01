@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { CONDITION_NAMES } from "./conditions";
+import { MetadataSchema } from "./metadata";
 
 export const MONSTER_SIZES = [
   "tiny",
@@ -21,10 +22,6 @@ export const MONSTER_ROLES = [
   "ambusher",
   "defender",
 ];
-
-export const MetadataSchema = z.object({
-  source: z.string().optional(),
-});
 
 export const AttackTargetSchema = z.union([
   z.object({ range: z.int().positive() }),

@@ -27,7 +27,10 @@
             }
           ]
         }
-      ]
+      ],
+      "meta": {
+        "source": "GMG"
+      }
     }
   ],
   "monsters": [
@@ -59,7 +62,10 @@
           "trigger": "death",
           "description": "An enemy gains 1 action."
         }
-      ]
+      ],
+      "meta": {
+        "source": "https://www.patreon.com/cw/NimbleCo"
+      }
     },
     {
       "name": "Goblin Taskmaster",
@@ -90,7 +96,10 @@
           "name": "Get in here!",
           "description": "Call a goblin minion to the fight."
         }
-      ]
+      ],
+      "meta": {
+        "source": "GMG"
+      }
     },
     {
       "legendary": true,
@@ -187,7 +196,10 @@
             }
           ]
         }
-      ]
+      ],
+      "meta": {
+        "source": "GMG"
+      }
     }
   ]
 }
