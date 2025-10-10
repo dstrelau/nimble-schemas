@@ -155,11 +155,11 @@ export const LegendaryMonsterSchema = z.object({
   ...StandardMonsterSchema.shape,
   legendary: z.literal(true),
   bloodied: z.object({
-    hp: z.int().positive(),
+    hp: z.int().positive().optional(),
     description: z.string().optional(),
   }),
   lastStand: z.object({
-    hp: z.int().positive(),
+    hp: z.int().positive().optional(),
     description: z.string().optional(),
   }),
 });
